@@ -8,14 +8,6 @@
       ./hardware-configuration.nix
     ];
 
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-
-  networking.hostName = "aegis"; 
-
-  networking.networkmanager.enable = true; 
-  
-
   time.timeZone = "Asia/Tashkent";
   i18n.defaultLocale = "en_US.UTF-8";
   # console = {
@@ -24,13 +16,39 @@
   #   useXkbConfig = true; # use xkb.options in tty.
   # };
 
+ 
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+
+  networking.hostName = "aegis"; 
+  networking.networkmanager.enable = true; 
+  
+  hardware.graphics = {
+    enable = true;
+    extraPackages = with pkgs; [
+      intel-media-sdk 
+    ];
+  };
+
   services.printing.enable = false;
 
   services.pipewire = {
     enable = true;
     alsa.enable = true;
+    alsa.support32Bit = true;
     pulse.enable = true;
+
+    lowLatency = {
+      # enable this module
+      enable = true;
+      # defaults (no need to be set unless modified)
+      quantum = 64;
+      rate = 48000;
+    };
   };
+
+  # make pipewire realtime-capable
+  security.rtkit.enable = true;
 
   users.users.dmitry = {
     shell = pkgs.zsh;
