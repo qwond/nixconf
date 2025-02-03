@@ -26,6 +26,13 @@
   hardware.graphics = {
     enable = true;
     extraPackages = with pkgs; [
+      libva
+      intel-media-driver
+      intel-vaapi-driver # previously vaapiIntel
+      vaapiVdpau
+      libvdpau-va-gl
+      intel-compute-runtime # OpenCL filter support (hardware tonemapping and subtitle burn-in)
+      vpl-gpu-rt # QSV on 11th gen or newer
       intel-media-sdk 
     ];
   };
@@ -37,14 +44,6 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-
-    lowLatency = {
-      # enable this module
-      enable = true;
-      # defaults (no need to be set unless modified)
-      quantum = 64;
-      rate = 48000;
-    };
   };
 
   # make pipewire realtime-capable
@@ -83,6 +82,11 @@
   };
 
   environment.systemPackages = with pkgs; [
+    libva
+    clinfo
+    intel-gpu-tools
+    sycl-info
+
     curl
     wget
   ];
