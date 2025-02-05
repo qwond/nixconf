@@ -1,5 +1,6 @@
 {
-  device ? "/dev/nvme0n1"
+  device ? "set deviice argument like  --arg device /dev/sdX",
+  ...
 }:
 {
   disko.devices = {
@@ -51,7 +52,6 @@
                     mountOptions = [ "noatime" ];
                     swap = {
                       swapfile.size = "16G";
-                      swapfile.path = "/swap/swapfile";
                     };
                   };
                 };
