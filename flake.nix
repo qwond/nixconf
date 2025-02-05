@@ -17,7 +17,7 @@
       modules = [
         inputs.disko.nixosModules.default
         (import ./disko.nix { device = "/dev/sda"; })
-        ./configuration.nix
+        ./nixos/configuration.nix
       ];
     };
   };
