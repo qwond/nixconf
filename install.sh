@@ -5,3 +5,6 @@ sudo nix --experimental-features "nix-command flakes" \
     --mode destroy,format,mount disko.nix \
     --arg device '"/dev/sda"' \
     --yes-wipe-all-disks
+
+sudo nix-collect-garbage -d
+sudo nixos-install --flake .#aegis
