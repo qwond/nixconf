@@ -15,8 +15,8 @@
     ./xdg.nix
     ./go.nix
     ./helix.nix
+    ./zed.nix
     ./neovim.nix
-    # ./devel.nix
     ./gtk.nix
     ./waybar.nix
   ];
@@ -60,6 +60,8 @@
 
     nixd
     transmission_4-gtk
+    # brave
+    # telegram-desktop
   ];
 
   # Enable home-manager and git
