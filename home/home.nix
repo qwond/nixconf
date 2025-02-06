@@ -12,6 +12,7 @@
     ./zsh.nix
     ./lf.nix
     ./git.nix
+    ./xdg.nix
     # ./neovim.nix
     # ./devel.nix
     # ./gtk.nix
