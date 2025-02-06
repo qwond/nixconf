@@ -1,12 +1,4 @@
-# This is your home-manager configuration file
-# Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
-{
-  inputs,
-  lib,
-  config,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   # You can import other home-manager modules here
   imports = [
     ./zsh.nix
@@ -59,6 +51,7 @@
     tree
 
     nixd
+    alejandra
     transmission_4-gtk
     # brave
     # telegram-desktop

@@ -14,15 +14,15 @@
     self,
     nixpkgs,
     home-manager,
-    ...} @ inputs: let
-      inherit (self) outputs;
-    in
-  {
+    ...
+  } @ inputs: let
+    inherit (self) outputs;
+  in {
     nixosConfigurations.aegis = nixpkgs.lib.nixosSystem {
       specialArgs = {inherit inputs;};
       modules = [
         inputs.disko.nixosModules.default
-        (import ./disko.nix { device = "/dev/sda"; })
+        (import ./disko.nix {device = "/dev/sda";})
         ./nixos/configuration.nix
       ];
     };
@@ -35,6 +35,5 @@
         modules = [./home/home.nix];
       };
     };
-
   };
 }
