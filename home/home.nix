@@ -13,10 +13,12 @@
     ./lf.nix
     ./git.nix
     ./xdg.nix
-    # ./neovim.nix
+    ./go.nix
+    ./helix.nix
+    ./neovim.nix
     # ./devel.nix
-    # ./gtk.nix
-    # ./waybar.nix
+    ./gtk.nix
+    ./waybar.nix
   ];
 
   nixpkgs = {
@@ -55,6 +57,9 @@
     bat
     btop
     tree
+
+    nixd
+    transmission_4-gtk
   ];
 
   # Enable home-manager and git
