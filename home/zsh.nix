@@ -11,6 +11,7 @@
     autocd = true;
     enableCompletion = true;
     enableVteIntegration = true;
+    syntaxHighlighting.enable = true;
 
     autosuggestion = {
       enable = true;
