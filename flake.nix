@@ -1,38 +1,49 @@
 {
-  description = "Nixos config flake";
+  description = "NixOS config";
 
   inputs = {
-    # Nixos
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-    # Home manager
-    home-manager.url = "github:nix-community/home-manager/master";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
     self,
     nixpkgs,
+    disko,
     home-manager,
     ...
   } @ inputs: let
     inherit (self) outputs;
   in {
-    nixosConfigurations.aegis = nixpkgs.lib.nixosSystem {
-      specialArgs = {inherit inputs;};
-      modules = [
-        inputs.disko.nixosModules.default
-        (import ./disko.nix {device = "/dev/sda";})
-        ./nixos/configuration.nix
-      ];
-    };
+    nixosConfigurations = {
+      karakum = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = {inherit inputs outputs;};
+        modules = [
+          disko.nixosModules.default
+          ./hosts/karakum
 
-    homeConfigurations = {
-      "dmitry@aegis" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.x86_64-linux;
-        extraSpecialArgs = {inherit inputs outputs;};
-
-        modules = [./home/home.nix];
+          # niri.nixosModules.niri
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            # home-manager.useUserPackages = false;
+            home-manager.users.dmitry = {
+              imports = [
+                ./home
+              ];
+            };
+          }
+        ];
       };
     };
   };

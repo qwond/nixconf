@@ -1,38 +1,31 @@
-{ pkgs, ... }:
+{pkgs, ...}: {
+  services.gnome-keyring.enable = true;
 
-{
-  # ...
-  gtk = {
-    enable = true;
+  home.packages = with pkgs; [
+    dconf
+    dconf-editor
+    nautilus
+    sushi
+  ];
 
-    iconTheme = {
-      name = "Papirus-Dark";
-      package = pkgs.papirus-icon-theme;
+  dconf.settings = {
+    "org/gnome/desktop/interface" = {
+      color-scheme = "prefer-dark";
     };
-
-    theme = {
-      name = "palenight";
-      package = pkgs.palenight-theme;
-    };
-
-    cursorTheme = {
-      name = "Numix-Cursor";
-      package = pkgs.numix-cursor-theme;
-    };
-
-    gtk3.extraConfig = {
-      Settings = ''
-        gtk-application-prefer-dark-theme=1
-      '';
-    };
-
-    gtk4.extraConfig = {
-      Settings = ''
-        gtk-application-prefer-dark-theme=1
-      '';
+    "org/gnome/nautilus/preferences" = {
+      use-system-font = true;
     };
   };
 
-  home.sessionVariables.GTK_THEME = "palenight";
-  # ...
+  gtk = {
+    enable = true;
+
+    gtk3.extraConfig = {
+      gtk-application-prefer-dark-theme = "1";
+    };
+
+    gtk4.extraConfig = {
+      gtk-application-prefer-dark-theme = "1";
+    };
+  };
 }
