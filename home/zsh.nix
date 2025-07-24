@@ -1,4 +1,4 @@
-{ ... }: {
+{...}: {
   programs.zsh = {
     enable = true;
     enableCompletion = true;
@@ -8,7 +8,7 @@
 
     initContent = ''
       setopt PROMPT_SUBST
-      export PROMPT=$'%n@%m %3~ \n%% ' 
+      export PROMPT=$'%n@%m %3~ %% '
     '';
   };
 }

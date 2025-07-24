@@ -13,6 +13,7 @@
     ./zsh.nix
     ./helix.nix
     ./devenv.nix
+    ./foot.nix
   ];
 
   home = {
@@ -23,7 +24,6 @@
   home.packages = with pkgs; [
     niri
     fuzzel
-    foot
     wl-clipboard
     waybar
     brave
@@ -35,7 +35,6 @@
     mpv
     transmission_4-gtk
     telegram-desktop
-    obsidian
   ];
 
   home.sessionVariables = {

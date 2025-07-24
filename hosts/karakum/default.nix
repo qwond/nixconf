@@ -26,29 +26,37 @@
 
   services.libinput.enable = true;
 
+  services.gvfs.enable = true;
+  services.devmon.enable = true;
   services.udisks2 = {
     enable = true;
     mountOnMedia = true;
   };
 
   services.upower.enable = true;
-  services.gvfs.enable = true;
 
   services.power-profiles-daemon.enable = true;
 
   users.users.dmitry = {
     isNormalUser = true;
     shell = pkgs.zsh;
-    extraGroups = ["wheel" "networkmanager"]; # Enable ‘sudo’ for the user.
+    extraGroups = [
+      "wheel"
+      "networkmanager"
+      "audio"
+      "video"
+      "disk"
+    ];
   };
 
   programs.zsh.enable = true;
 
   environment.defaultPackages = [];
   environment.systemPackages = with pkgs; [
-    vim
     curl
     wget
+    bat
+    yazi
   ];
 
   hardware.graphics = {

@@ -6,6 +6,7 @@
     gopls
     nil
     alejandra
+    texliveMedium
   ];
 
   home.sessionVariables = {

@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   programs.helix = {
     enable = true;
 
@@ -10,7 +10,7 @@
         text-width = 120;
         bufferline = "multiple";
         default-line-ending = "lf";
-        rulers = [ 122 ];
+        rulers = [122];
         cursorline = true;
         auto-info = true;
         color-modes = true;
@@ -38,7 +38,7 @@
             "file-modification-indicator"
             "read-only-indicator"
           ];
-          center = [ "version-control" "file-name" ];
+          center = ["version-control" "file-name"];
           right = [
             "diagnostics"
             "selections"
@@ -61,22 +61,24 @@
         };
       };
 
-      keys = { insert = { j.k = "normal_mode"; }; };
+      keys = {insert = {j.k = "normal_mode";};};
     };
 
-    # Languages 
+    # Languages
     languages = {
-      language = [{
-        name = "nix";
-        auto-format = true;
-        formatter.command = "${pkgs.alejandra}/bin/alejandra";
-      }];
+      language = [
+        {
+          name = "nix";
+          auto-format = true;
+          formatter.command = "${pkgs.alejandra}/bin/alejandra";
+        }
+      ];
     };
 
     themes = {
       darcula_custom = {
         "inherits" = "darcula";
-        "ui.background" = { };
+        "ui.background" = {};
       };
     };
   };
