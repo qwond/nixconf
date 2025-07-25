@@ -10,6 +10,7 @@
 
   dconf.settings = {
     "org/gnome/desktop/interface" = {
+      gtk-theme = "Breeze-Dark";
       color-scheme = "prefer-dark";
     };
     "org/gnome/nautilus/preferences" = {
@@ -19,7 +20,17 @@
 
   gtk = {
     enable = true;
-
+    iconTheme = {
+      name = "Papirus-Dark";
+      package = pkgs.catppuccin-papirus-folders.override {
+        flavor = "mocha";
+        accent = "lavender";
+      };
+    };
+    cursorTheme = {
+      name = "Catppuccin-Mocha-Light-Cursors";
+      package = pkgs.catppuccin-cursors.mochaLight;
+    };
     gtk3.extraConfig = {
       gtk-application-prefer-dark-theme = "1";
     };
@@ -27,5 +38,11 @@
     gtk4.extraConfig = {
       gtk-application-prefer-dark-theme = "1";
     };
+  };
+  home.pointerCursor = {
+    gtk.enable = true;
+    name = "Catppuccin-Mocha-Light-Cursors";
+    package = pkgs.catppuccin-cursors.mochaLight;
+    size = 16;
   };
 }

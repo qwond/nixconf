@@ -9,6 +9,7 @@
     ./disko.nix
     ./nixconf.nix
     ./boot.nix
+    ./fonts.nix
   ];
 
   networking.hostName = "karakum";
@@ -43,6 +44,7 @@
     extraGroups = [
       "wheel"
       "networkmanager"
+      "input"
       "audio"
       "video"
       "disk"
@@ -63,9 +65,11 @@
     enable = true;
   };
 
-  programs.vim = {
+  programs.neovim = {
     enable = true;
     defaultEditor = true;
+    vimAlias = true;
+    viAlias = true;
   };
 
   system.stateVersion = "25.05"; # Did you read the comment?

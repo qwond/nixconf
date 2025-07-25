@@ -1,4 +1,4 @@
-{...}: {
+{pkgs, ...}: {
   programs.zsh = {
     enable = true;
     enableCompletion = true;
@@ -6,9 +6,22 @@
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
 
+    plugins = [
+      {
+        name = "pure";
+        src = pkgs.fetchFromGitHub {
+          owner = "sindresorhus";
+          repo = "pure";
+          rev = "5c2158096cd992ad73ae4b42aa43ee618383e092";
+          sha256 = "sha256-m4vCfX/IwByQN0OvcwDs+fy6LYndhGbNDQueOCREVx8=";
+        };
+      }
+    ];
+
     initContent = ''
-      setopt PROMPT_SUBST
-      export PROMPT=$'%n@%m %3~ %% '
+      # Initialize zsh-async before pure
+      autoload -U promptinit; promptinit
+      prompt pure
     '';
   };
 }

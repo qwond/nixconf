@@ -8,12 +8,13 @@
   imports = [
     ./git.nix
     ./xdg.nix
-    ./fonts.nix
     ./gtk.nix
     ./zsh.nix
     ./helix.nix
     ./devenv.nix
     ./foot.nix
+    ./direnv.nix
+    ./eww.nix
   ];
 
   home = {
@@ -22,9 +23,10 @@
   };
 
   home.packages = with pkgs; [
+    ripgrep
     niri
-    fuzzel
     wl-clipboard
+    fuzzel
     waybar
     brave
     chromium
@@ -35,6 +37,9 @@
     mpv
     transmission_4-gtk
     telegram-desktop
+    xreader
+    zathura
+    brightnessctl
   ];
 
   home.sessionVariables = {
