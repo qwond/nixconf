@@ -12,8 +12,18 @@
     nil
     alejandra
     texliveFull
+    ghostscript
     stylua
     lua-language-server
+    luarocks
+    shfmt
+    yamlfmt
+    typstfmt
+    taplo
+    prettier
+    isort
+    markdownlint-cli2
+    tree-sitter
   ];
 
   home.sessionPath = [

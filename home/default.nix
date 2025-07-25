@@ -23,6 +23,7 @@
   };
 
   home.packages = with pkgs; [
+    fd
     ripgrep
     niri
     wl-clipboard
