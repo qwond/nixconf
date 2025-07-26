@@ -15,6 +15,8 @@
     ghostscript
     stylua
     lua-language-server
+    lua
+    selene
     luarocks
     shfmt
     yamlfmt

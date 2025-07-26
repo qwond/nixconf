@@ -9,14 +9,14 @@
     ./disko.nix
     ./nixconf.nix
     ./boot.nix
+    ./hardware.nix
     ./fonts.nix
+    ./networking.nix
+    ./devops.nix
+
+    # common packages
+    ../common
   ];
-
-  networking.hostName = "karakum";
-  networking.networkmanager.enable = true;
-  networking.useDHCP = lib.mkDefault true;
-
-  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
   time.timeZone = "Asia/Tashkent";
 
@@ -35,7 +35,6 @@
   };
 
   services.upower.enable = true;
-
   services.power-profiles-daemon.enable = true;
 
   users.users.dmitry = {
@@ -48,28 +47,15 @@
       "audio"
       "video"
       "disk"
+      "docker"
     ];
   };
 
   programs.zsh.enable = true;
 
-  environment.defaultPackages = [];
-  environment.systemPackages = with pkgs; [
-    curl
-    wget
-    bat
-    yazi
-  ];
-
-  hardware.graphics = {
-    enable = true;
-  };
-
   programs.neovim = {
     enable = true;
     defaultEditor = true;
-    vimAlias = true;
-    viAlias = true;
   };
 
   system.stateVersion = "25.05"; # Did you read the comment?

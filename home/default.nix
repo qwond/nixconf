@@ -23,8 +23,6 @@
   };
 
   home.packages = with pkgs; [
-    fd
-    ripgrep
     niri
     wl-clipboard
     fuzzel
@@ -32,18 +30,16 @@
     brave
     chromium
     pavucontrol
-    tree
-    btop
-    yazi
     mpv
     transmission_4-gtk
     telegram-desktop
-    xreader
     zathura
     brightnessctl
   ];
 
   home.sessionVariables = {
+    BROWSER = "chromium";
+    TERMINAL = "foot";
     ELECTRON_OZONE_PLATFORM_HINT = "wayland";
     CLUTTER_BACKEND = "wayland";
     GDK_BACKEND = "wayland";
