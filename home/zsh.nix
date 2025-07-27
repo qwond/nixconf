@@ -19,6 +19,9 @@
     ];
 
     initContent = ''
+      # short alias for neovim
+      (( $+commands[nvim] )) && alias nv=nvim
+
       # Initialize zsh-async before pure
       PURE_PROMPT_SYMBOL=λ
       autoload -U promptinit; promptinit

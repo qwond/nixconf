@@ -15,6 +15,7 @@
     ./foot.nix
     ./direnv.nix
     ./eww.nix
+    ./vscode.nix
   ];
 
   home = {
