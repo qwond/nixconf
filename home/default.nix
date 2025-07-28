@@ -16,6 +16,7 @@
     ./direnv.nix
     ./eww.nix
     ./vscode.nix
+    ./mpd.nix
   ];
 
   home = {
