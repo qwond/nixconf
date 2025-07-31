@@ -7,6 +7,8 @@
     extraConfig = {
       init.defaultBranch = "main";
       pull.rebase = true;
+
+      url."ssh://git@git.softteampro.uz:2222/".insteadOf = "https://git.softteampro.uz/";
     };
     aliases = {
       undo = "reset HEAD~1 --mixed";

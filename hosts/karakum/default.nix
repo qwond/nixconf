@@ -53,10 +53,5 @@
 
   programs.zsh.enable = true;
 
-  programs.neovim = {
-    enable = true;
-    defaultEditor = true;
-  };
-
   system.stateVersion = "25.05"; # Did you read the comment?
 }

@@ -1,9 +1,12 @@
 {pkgs, ...}: {
   imports = [
     ./netutils.nix
+    ./productivity.nix
   ];
 
   environment.defaultPackages = with pkgs; [
+    bat
+    bc
     file
     direnv
     vim
@@ -18,8 +21,13 @@
     p7zip
   ];
 
+  programs.neovim = {
+    enable = true;
+    defaultEditor = true;
+  };
+
   environment.variables = {
-    EDITOR = "vim";
+    EDITOR = "nvim";
     PAGER = "bat";
   };
 }
